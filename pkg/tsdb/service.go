@@ -29,14 +29,6 @@ func init() {
 	})
 }
 
-type HandleRequestFunc func(ctx context.Context, ds *models.DataSource, req pluginmodels.TSDBQuery) (pluginmodels.TSDBResponse, error)
-
-type TSDBQueryEndpoint interface {
-	Query(ctx context.Context, ds *models.DataSource, query pluginmodels.TSDBQuery) (pluginmodels.TSDBResponse, error)
-}
-
-type GetTSDBQueryEndpointFn func(ds *models.DataSource) (TSDBQueryEndpoint, error)
-
 // Service handles requests to TSDB data sources.
 type Service struct {
 	Cfg                    *setting.Cfg                  `inject:""`
